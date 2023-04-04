@@ -32,68 +32,37 @@ public class Jsonparser {
      Object object = parser.parse(strJson);
      JSONObject mainJsonObject = (JSONObject) object;
      
-        //String name = (String) mainJsonObject.get("name");
-    // System.out.println("name :" + name);
+           String name = (String) mainJsonObject.get("name");
+     System.out.println("name :" + name);
      
-     JSONArray jsonArrayelements = (JSONArray) mainJsonObject.get("processing_elements");
-     System.out.println("elements :");
+   JSONArray jsonArrayparameters = (JSONArray) mainJsonObject.get("processing_elements");
+   System.out.println("parameters are" + jsonArrayparameters);
+  
+   
+   for (int i = 0; i<jsonArrayparameters.size(); i++){
+       
+       
+       
+         JSONObject jsonentries = (JSONObject) jsonArrayparameters.get(i);
+       System.out.println("entries" + (i+1));
+       
+            String type = (String) jsonentries.get("type");
+     System.out.println("type :" + type);
+   
+
+       String Name = (String) jsonentries.get("Name");
+     System.out.println("name :" + Name);
+          String value = (String) jsonentries.get("value");
+     System.out.println("value :" + value);
      
-       JSONArray jsonArrayentries = (JSONArray) mainJsonObject.get("input_entries");
-     System.out.println("entries :");
      
-          JSONArray jsonArrayparameters = (JSONArray) mainJsonObject.get("parameters");
-     System.out.println("parameters");
-     
-     
+ 
     
-     
-     for (int i = 0; i<jsonArrayelements.size();i++){
-         for (int j = 0; j<jsonArrayentries.size();j++){
-             for (int h = 0; h<jsonArrayparameters.size();h++){
-     
-           
-         
-           JSONObject jsonelement = (JSONObject) jsonArrayelements.get(i);
-        System.out.println("elements: " + (i+1));
-     
-            String type = (String) jsonelement.get("type");
-    System.out.println("Type: " + type);
-     
-        JSONObject jsonentrie = (JSONObject) jsonArrayentries.get(j);
-         System.out.println("Entries: " + (j+1));
-         
-                    String path = (String) jsonentrie.get("path");
-     System.out.println("Path: " + path);
-     
-        JSONObject jsonparameter = (JSONObject) jsonArrayparameters.get(h);
-         System.out.println("Parameters: " + (h+1));
-         
-                         String name = (String) jsonparameter.get("name");
-     System.out.println("Name: " + name);
-     
-                     String value = (String) jsonparameter.get("value");
-     System.out.println("Value: " + value);
-         
-         
-         
-         
-
-     
-     
-
-
-
-             
-             }
-         }
-         
-     
-     } 
-
+   }
  }
 catch (Exception e) {
          e.printStackTrace();
  }
- }
- }
+ 
+}}
 
